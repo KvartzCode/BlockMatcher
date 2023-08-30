@@ -23,6 +23,12 @@ public static class Extensions
         return test;
     }
 
+    public static Vector3 RoundOff(this Vector3 v, float x, float y, float z)
+    {
+        Vector3 test = new Vector3(MathF.Round(v.x / x) * x, MathF.Round(v.y / y) * y, MathF.Round(v.z / z) * z);
+        return test;
+    }
+
     public static Vector3 RoundOffTop(this Vector3 v, int value)
     {
         Vector3 test = new Vector3(MathF.Round(v.x / value) * value, (MathF.Round(v.y / value) * value) + value, MathF.Round(v.z / value) * value);
