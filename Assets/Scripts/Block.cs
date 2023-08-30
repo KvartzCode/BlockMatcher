@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class Block : MonoBehaviour
 {
-    public int ID = -1;
+    public int ID = -1; //TODO: Make use of this when implementing handling for differently shaped blocks.
     public bool isSnapped = false;
 
     private float CameraZDistance;
@@ -17,10 +16,13 @@ public class Block : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Moves block a certain distance from camera.
+    /// </summary>
     public void MoveBlock()
     {
         Vector3 ScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, CameraZDistance); //z axis added to screen point 
-        Vector3 NewWorldPosition = Camera.main.ScreenToWorldPoint(ScreenPosition); //Screen point converted to world point
+        Vector3 NewWorldPosition = Camera.main.ScreenToWorldPoint(ScreenPosition);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

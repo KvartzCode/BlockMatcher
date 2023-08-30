@@ -11,7 +11,6 @@ public class CameraRotation : MonoBehaviour
     Vector3 lastMousePos;
     [SerializeField] float rotateSpeed = 300;
     [SerializeField] float scrollSpeed = 1;
-    public Material mat;
 
 
     private void Start()

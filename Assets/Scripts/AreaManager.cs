@@ -1,10 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// Acts kinda like small GameManager for now.
+/// </summary>
 public class AreaManager : MonoBehaviour
 {
     private static AreaManager _instance;
@@ -13,7 +16,7 @@ public class AreaManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                Debug.LogError("GameManager instance is null!");
+                Debug.LogError("AreaManager instance is null!");
 
             return _instance;
         }
@@ -45,7 +48,7 @@ public class AreaManager : MonoBehaviour
 
 
     /// <summary>
-    /// return percent of areas filled.
+    /// Returns rounded percent of areas filled.
     /// </summary>
     int GetScore()
     {
@@ -54,16 +57,13 @@ public class AreaManager : MonoBehaviour
         return score;
     }
 
-    public void AreaFilled()
+    public void UpdateScore()
     {
         text.text = $"Score: {GetScore()}%";
     }
 
-    public void AreaEmptied()
-    {
-        text.text = $"Score: {GetScore()}%";
-    }
 
+    // Should be in a GameManager. But have no need for a larger system for now.
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

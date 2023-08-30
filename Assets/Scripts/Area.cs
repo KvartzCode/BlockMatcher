@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Area : MonoBehaviour
 {
-    public int ID = -1;
+    public int ID = -1; //TODO: Make use of this when implementing handling for differently shaped blocks.
     public bool isFilled = false;
     Block block;
 
@@ -18,7 +17,7 @@ public class Area : MonoBehaviour
 
         isFilled = true;
         this.block = block;
-        AreaManager.Instance.AreaFilled();
+        AreaManager.Instance.UpdateScore();
     }
 
     private void OnTriggerExit(Collider other)
@@ -26,7 +25,7 @@ public class Area : MonoBehaviour
         if (block && other.GetComponent<Block>() == block)
         {
             isFilled = false;
-            AreaManager.Instance.AreaEmptied();
+            AreaManager.Instance.UpdateScore();
             block = null;
         }
     }
